@@ -2,22 +2,37 @@ package com.dio.santander.banklineapi.model.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.dio.santander.banklineapi.model.entities.enums.TransitionType;
 
+@Entity
+@Table(name = "tb_transition")
 public class Transition {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime dateTime;
+
+    private LocalDateTime date;
     private String description;
     private Double value;
+
+    @Enumerated(EnumType.STRING)
     private TransitionType type;
 
     public Transition() {
     }
 
-    public Transition(Integer id, LocalDateTime dateTime, String description, Double value) {
+    public Transition(Integer id, LocalDateTime date, String description, Double value) {
         this.id = id;
-        this.dateTime = dateTime;
+        this.date = date;
         this.description = description;
         this.value = value;
     }
@@ -30,12 +45,12 @@ public class Transition {
         this.id = id;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public String getDescription() {
