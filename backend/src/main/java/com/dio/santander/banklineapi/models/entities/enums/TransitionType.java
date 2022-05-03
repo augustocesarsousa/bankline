@@ -1,4 +1,4 @@
-package com.dio.santander.banklineapi.model.entities.enums;
+package com.dio.santander.banklineapi.models.entities.enums;
 
 public enum TransitionType {
 

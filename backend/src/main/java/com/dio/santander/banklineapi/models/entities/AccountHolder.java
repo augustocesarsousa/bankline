@@ -1,4 +1,4 @@
-package com.dio.santander.banklineapi.model.entities;
+package com.dio.santander.banklineapi.models.entities;
 
 import java.util.HashSet;
 import java.util.Set;

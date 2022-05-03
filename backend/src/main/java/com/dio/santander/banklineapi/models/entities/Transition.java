@@ -1,7 +1,8 @@
-package com.dio.santander.banklineapi.model.entities;
+package com.dio.santander.banklineapi.models.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.dio.santander.banklineapi.model.entities.enums.TransitionType;
+import com.dio.santander.banklineapi.models.entities.enums.TransitionType;
 
 @Entity
 @Table(name = "tb_transition")
@@ -27,14 +28,20 @@ public class Transition {
     @Enumerated(EnumType.STRING)
     private TransitionType type;
 
+    @Column(name = "id_Account")
+    private Integer idAccount;
+
     public Transition() {
     }
 
-    public Transition(Integer id, LocalDateTime date, String description, Double value) {
+    public Transition(Integer id, LocalDateTime date, String description, Double value, TransitionType type,
+            Integer idAccount) {
         this.id = id;
         this.date = date;
         this.description = description;
         this.value = value;
+        this.type = type;
+        this.idAccount = idAccount;
     }
 
     public Integer getId() {
@@ -75,6 +82,14 @@ public class Transition {
 
     public void setType(TransitionType type) {
         this.type = type;
+    }
+
+    public Integer getIdAccount() {
+        return idAccount;
+    }
+
+    public void setIdAccount(Integer idAccount) {
+        this.idAccount = idAccount;
     }
 
 }
