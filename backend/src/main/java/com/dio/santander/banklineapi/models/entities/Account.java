@@ -6,38 +6,32 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Account {
 
-    @Column(name = "account_number")
-    private Long number;
+  @Column(name = "account_number")
+  private Long number;
 
-    @Column(name = "account_balance")
-    private Double balance;
+  @Column(name = "account_balance")
+  private Double balance = 0.0;
 
-    public Account() {
-    }
+  public Account() {}
 
-    public Account(Long number, Double balance) {
-        this.number = number;
-        this.balance = balance;
-    }
+  public Account(Long number, Double balance) {
+    this.number = number;
+    this.balance = balance;
+  }
 
-    public Long getNumber() {
-        return number;
-    }
+  public Long getNumber() {
+    return number;
+  }
 
-    public void setNumber(Long number) {
-        this.number = number;
-    }
+  public void setNumber(Long number) {
+    this.number = number;
+  }
 
-    public Double getBalance() {
-        return balance;
-    }
+  public Double getBalance() {
+    return balance;
+  }
 
-    public void withdraw(Double amount) {
-        this.balance -= amount;
-    }
-
-    public void deposit(Double amount) {
-        this.balance += amount;
-    }
-
+  public void setBalance(Double balance) {
+    this.balance = balance;
+  }
 }
