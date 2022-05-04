@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { TransitionService } from 'src/app/services/transition.service';
 
 @Component({
   selector: 'app-transition-list',
   templateUrl: './transition-list.component.html',
-  styleUrls: ['./transition-list.component.css']
+  styleUrls: ['./transition-list.component.css'],
 })
 export class TransitionListComponent implements OnInit {
+  transitions: any;
 
-  constructor() { }
+  constructor(private transitionService: TransitionService) {}
 
   ngOnInit(): void {
+    this.listTransitions();
   }
 
+  listTransitions(): void {
+    this.transitionService.list().subscribe(
+      (data) => {
+        this.transitions = data;
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

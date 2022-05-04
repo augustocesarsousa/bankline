@@ -24,23 +24,23 @@ public class TransitionService {
   public void save(NewTransitionDTO newTransition) {
     Transition transition = new Transition();
     Double value = newTransition.getType() == TransitionType.REVENUE
-      ? newTransition.getValue()
-      : newTransition.getValue() * -1;
+        ? newTransition.getValue()
+        : newTransition.getValue() * -1;
 
-    transition.setDate(LocalDateTime.now());
+    transition.setDateTime(LocalDateTime.now());
     transition.setDescription(newTransition.getDescription());
     transition.setIdAccount(newTransition.getIdAccount());
     transition.setType(newTransition.getType());
     transition.setValue(value);
 
     AccountHolder accountHolder = accountHolderRepository
-      .findById(transition.getIdAccount())
-      .orElse(null);
+        .findById(transition.getIdAccount())
+        .orElse(null);
 
     if (accountHolder != null) {
       accountHolder
-        .getAccount()
-        .setBalance(accountHolder.getAccount().getBalance() + value);
+          .getAccount()
+          .setBalance(accountHolder.getAccount().getBalance() + value);
       accountHolderRepository.save(accountHolder);
     }
 

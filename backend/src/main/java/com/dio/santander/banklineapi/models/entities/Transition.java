@@ -21,7 +21,7 @@ public class Transition {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private LocalDateTime date;
+  private LocalDateTime dateTime;
   private String description;
   private Double value;
 
@@ -31,18 +31,18 @@ public class Transition {
   @Column(name = "id_Account")
   private Integer idAccount;
 
-  public Transition() {}
+  public Transition() {
+  }
 
   public Transition(
-    Long id,
-    LocalDateTime date,
-    String description,
-    Double value,
-    TransitionType type,
-    Integer idAccount
-  ) {
+      Long id,
+      LocalDateTime dateTime,
+      String description,
+      Double value,
+      TransitionType type,
+      Integer idAccount) {
     this.id = id;
-    this.date = date;
+    this.dateTime = dateTime;
     this.description = description;
     this.value = value;
     this.type = type;
@@ -57,12 +57,12 @@ public class Transition {
     this.id = id;
   }
 
-  public LocalDateTime getDate() {
-    return date;
+  public LocalDateTime getDateTime() {
+    return dateTime;
   }
 
-  public void setDate(LocalDateTime date) {
-    this.date = date;
+  public void setDateTime(LocalDateTime dateTime) {
+    this.dateTime = dateTime;
   }
 
   public String getDescription() {
