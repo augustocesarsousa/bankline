@@ -13,4 +13,8 @@ export class AccountHolderService {
   list(): Observable<any> {
     return this.http.get(`${baseUrl}/accountholders`);
   }
+
+  create(accountHolder:any): Observable<any> {
+    return this.http.post(`${baseUrl}/accountholders`,accountHolder);
+  }
 }

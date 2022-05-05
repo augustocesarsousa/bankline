@@ -10,11 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TransitionListComponent } from './components/transition-list/transition-list.component';
 import { TransitionNewComponent } from './components/transition-new/transition-new.component';
+import { AccountHolderComponent } from './components/account-holder/account-holder.component';
 
 registerLocaleData(localePt);
 
 @NgModule({
-  declarations: [AppComponent, TransitionListComponent, TransitionNewComponent],
+  declarations: [AppComponent, TransitionListComponent, TransitionNewComponent, AccountHolderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
