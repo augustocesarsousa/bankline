@@ -3,66 +3,67 @@
     <h1 class="display-6">Transition</h1>
     <p class="lead-1">Add a new transition</p>
     <hr class="my-2" />
-
-    <div class="col-md-3">
-      <label for="iDate" class="form-label">Date</label>
-      <input
-        type="date"
-        [(ngModel)]="dateTime"
-        class="form-control"
-        id="iDate"
-      />
-    </div>
-    <div class="col-md-9">
-      <label for="iAccountHouder" class="form-label">Account Houder</label>
-      <select
-        id="iAccountHouder"
-        [(ngModel)]="accountHolder"
-        class="form-select"
-      >
-        <option *ngFor="let a of accountHolders" [ngValue]="a">
-          {{ a.cpf }}-{{ a.name }}
-        </option>
-      </select>
-    </div>
-    <div class="col-12">
-      <label for="iDescription" class="form-label">Description</label>
-      <input
-        type="text"
-        [(ngModel)]="description"
-        class="form-control"
-        id="iDescription"
-        placeholder="Informe uma descrição"
-      />
-    </div>
-    <div class="col-md-3">
-      <label for="iType" class="form-label">Transition Type</label>
-      <select id="iType" [(ngModel)]="type" class="form-select">
-        <option selected>Types</option>
-        <option selected>REVENUE</option>
-        <option>EXPENDITURE</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <label for="iValue" class="form-label">R$ Value</label>
-      <input
-        type="text"
-        [(ngModel)]="value"
-        currencyMask
-        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-        class="form-control"
-        id="iValue"
-      />
-    </div>
-    <div class="d-grid gap-2 d-md-flex">
-      <button
-        class="btn btn-outline-primary me-md-2"
-        type="button"
-        (click)="save()"
-      >
-        Register
-      </button>
-      <a routerLink="/transition" class="btn btn-outline-secondary">Cancer</a>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="iDate" class="form-label">Date</label>
+        <input
+          type="date"
+          [(ngModel)]="dateTime"
+          class="form-control"
+          id="iDate"
+        />
+      </div>
+      <div class="col-md-9">
+        <label for="iAccountHouder" class="form-label">Account Houder</label>
+        <select
+          id="iAccountHouder"
+          [(ngModel)]="accountHolder"
+          class="form-select"
+        >
+          <option *ngFor="let a of accountHolders" [ngValue]="a">
+            {{ a.cpf }}-{{ a.name }}
+          </option>
+        </select>
+      </div>
+      <div class="col-12">
+        <label for="iDescription" class="form-label">Description</label>
+        <input
+          type="text"
+          [(ngModel)]="description"
+          class="form-control"
+          id="iDescription"
+          placeholder="Enter with a description"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="iType" class="form-label">Transition Type</label>
+        <select id="iType" [(ngModel)]="type" class="form-select">
+          <option>REVENUE</option>
+          <option>EXPENDITURE</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="iValue" class="form-label">US$ Value</label>
+        <input
+          type="text"
+          [(ngModel)]="value"
+          currencyMask
+          [options]="{ prefix: 'US$ ', thousands: '.', decimal: ',' }"
+          class="form-control"
+          id="iValue"
+        />
+      </div>
+      <div class="d-grid gap-2 d-md-flex mt-2 mb-3">
+        <button
+          class="btn btn-outline-primary me-md-2"
+          type="button"
+          (click)="save()"
+          routerLink="/transition"
+        >
+          Register
+        </button>
+        <a routerLink="/transition" class="btn btn-outline-secondary">Cancer</a>
+      </div>
     </div>
   </div>
 </div>

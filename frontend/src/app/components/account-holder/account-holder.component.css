@@ -1,0 +1,23 @@
+.card-container{
+    margin-bottom: 20px;
+}
+
+.card{
+    margin: 1px;
+}
+
+@media(min-width: 768px){
+    .btn-50{
+        width: 50%;
+    }
+
+    .card-container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card{
+        display: flex;
+        width: 33%;
+    }
+}

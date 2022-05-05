@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.dio.santander.banklineapi.models.entities.enums.TransitionType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "tb_transition")
@@ -21,7 +22,9 @@ public class Transition {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @JsonFormat(pattern = "MMM-d-yyyy H:mm:ss")
   private LocalDateTime date;
+
   private String description;
   private Double value;
 
@@ -31,16 +34,16 @@ public class Transition {
   @Column(name = "id_Account")
   private Integer idAccount;
 
-  public Transition() {}
+  public Transition() {
+  }
 
   public Transition(
-    Long id,
-    LocalDateTime date,
-    String description,
-    Double value,
-    TransitionType type,
-    Integer idAccount
-  ) {
+      Long id,
+      LocalDateTime date,
+      String description,
+      Double value,
+      TransitionType type,
+      Integer idAccount) {
     this.id = id;
     this.date = date;
     this.description = description;
