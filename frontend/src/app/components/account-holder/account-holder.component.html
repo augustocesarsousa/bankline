@@ -4,39 +4,44 @@
     <p class="lead-1">Account Holder Registration</p>
     <hr class="my-2" />
   </div>
-  <div class="row g-2">
-    <div class="col-md-3">
-      <input
-        class="form-control"
-        id="iCpf"
-        [(ngModel)]="cpf"
-        placeholder="CPF"
-      />
-    </div>
-    <div class="col-md-5">
-      <input
-        type="text"
-        class="form-control"
-        id="iName"
-        [(ngModel)]="name"
-        placeholder="Account Holder Name"
-      />
-    </div>
-    <div class="col-md-4">
-      <div class="d-grid gap-2 d-md-flex">
-        <button
-          class="btn btn-outline-primary btn-50"
-          type="button"
-          (click)="save()"
-        >
-          Add
-        </button>
-        <a routerLink="/transaction" class="btn btn-outline-danger btn-50"
-          >Back</a
-        >
+  <form [formGroup]="form">
+    <div class="row g-2">
+      <div class="col-md-3">
+        <input
+          class="form-control"
+          id="cpf"
+          [(ngModel)]="cpf"
+          placeholder="CPF"
+          required
+          minlength="11"
+          #cpfValidator="ngModel"
+        />
+      </div>
+      <div class="col-md-5">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="name"
+          placeholder="Account Holder Name"
+        />
+      </div>
+      <div class="col-md-4">
+        <div class="d-grid gap-2 d-md-flex">
+          <button
+            class="btn btn-outline-primary btn-50"
+            type="submit"
+            (click)="save()"
+          >
+            Add
+          </button>
+          <a routerLink="/transaction" class="btn btn-outline-danger btn-50"
+            >Back</a
+          >
+        </div>
       </div>
     </div>
-  </div>
+  </form>
   <p></p>
   <div class="card-container">
     <div *ngFor="let item of accountHolders; index as i" class="card">

@@ -7,12 +7,14 @@
       <select
         id="iaccountHouder"
         [(ngModel)]="accountHolder"
+        required
         class="form-select"
       >
         <option *ngFor="let a of accountHolders" [ngValue]="a">
           {{ a.cpf }}-{{ a.name }}
         </option>
       </select>
+
       <button
         class="btn btn-outline-secondary me-md-2 btn-sm"
         type="button"

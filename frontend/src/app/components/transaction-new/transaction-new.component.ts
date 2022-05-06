@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AccountHolderService } from 'src/app/services/account-holder.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 
@@ -18,7 +19,8 @@ export class TransactionNewComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
-    private accountHolderService: AccountHolderService
+    private accountHolderService: AccountHolderService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -50,10 +52,15 @@ export class TransactionNewComponent implements OnInit {
     this.transactionService.create(movimentacao).subscribe(
       (response) => {
         console.log(response);
+        this.showSuccess();
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+
+  showSuccess() {
+    this.toastr.success('Transaction added successfully!');
   }
 }
