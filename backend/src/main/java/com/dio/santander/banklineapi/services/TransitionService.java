@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.dio.santander.banklineapi.models.dto.NewTransitionDTO;
 import com.dio.santander.banklineapi.models.entities.AccountHolder;
-import com.dio.santander.banklineapi.models.entities.Transition;
+import com.dio.santander.banklineapi.models.entities.Transaction;
 import com.dio.santander.banklineapi.models.entities.enums.TransitionType;
 import com.dio.santander.banklineapi.repositories.AccountHolderRepository;
 import com.dio.santander.banklineapi.repositories.TransitionRepository;
@@ -22,7 +22,7 @@ public class TransitionService {
   private AccountHolderRepository accountHolderRepository;
 
   public void save(NewTransitionDTO newTransition) {
-    Transition transition = new Transition();
+    Transaction transition = new Transaction();
     Double value = newTransition.getType() == TransitionType.REVENUE
       ? newTransition.getValue()
       : newTransition.getValue() * -1;

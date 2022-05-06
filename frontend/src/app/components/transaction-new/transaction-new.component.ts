@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountHolderService } from 'src/app/services/account-holder.service';
-import { TransitionService } from 'src/app/services/transition.service';
+import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
-  selector: 'app-transition-new',
-  templateUrl: './transition-new.component.html',
-  styleUrls: ['./transition-new.component.css'],
+  selector: 'app-transaction-new',
+  templateUrl: './transaction-new.component.html',
+  styleUrls: ['./transaction-new.component.css'],
 })
-export class TransitionNewComponent implements OnInit {
+export class TransactionNewComponent implements OnInit {
   accountHolders: any;
   accountHolder: any;
 
@@ -17,7 +17,7 @@ export class TransitionNewComponent implements OnInit {
   type: any;
 
   constructor(
-    private transitionService: TransitionService,
+    private transactionService: TransactionService,
     private accountHolderService: AccountHolderService
   ) {}
 
@@ -47,7 +47,7 @@ export class TransitionNewComponent implements OnInit {
       dateTime: this.dateTime,
     };
     console.log(movimentacao);
-    this.transitionService.create(movimentacao).subscribe(
+    this.transactionService.create(movimentacao).subscribe(
       (response) => {
         console.log(response);
       },

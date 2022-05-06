@@ -1,6 +1,6 @@
 package com.dio.santander.banklineapi.models.dto;
 
-import com.dio.santander.banklineapi.models.entities.Transition;
+import com.dio.santander.banklineapi.models.entities.Transaction;
 import com.dio.santander.banklineapi.models.entities.enums.TransitionType;
 
 public class NewTransitionDTO {
@@ -24,7 +24,7 @@ public class NewTransitionDTO {
     this.idAccount = idAccount;
   }
 
-  public NewTransitionDTO(Transition transition) {
+  public NewTransitionDTO(Transaction transition) {
     this.description = transition.getDescription();
     this.value = transition.getValue();
     this.type = transition.getType();

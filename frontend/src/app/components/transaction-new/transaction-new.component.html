@@ -1,7 +1,7 @@
 <div class="container">
   <div class="jumbotron">
-    <h1 class="display-6">Transition</h1>
-    <p class="lead-1">Add a new transition</p>
+    <h1 class="display-6">Transaction</h1>
+    <p class="lead-1">Add a new transaction</p>
     <hr class="my-2" />
     <div class="row">
       <div class="col-md-3">
@@ -36,7 +36,7 @@
         />
       </div>
       <div class="col-md-3">
-        <label for="iType" class="form-label">Transition Type</label>
+        <label for="iType" class="form-label">Transaction Type</label>
         <select id="iType" [(ngModel)]="type" class="form-select">
           <option>REVENUE</option>
           <option>EXPENDITURE</option>
@@ -49,7 +49,7 @@
           [(ngModel)]="value"
           currencyMask
           [options]="{ prefix: 'US$ ', thousands: '.', decimal: ',' }"
-          class="form-control"
+          class="form-control transaction-value"
           id="iValue"
         />
       </div>
@@ -58,11 +58,11 @@
           class="btn btn-outline-primary me-md-2"
           type="button"
           (click)="save()"
-          routerLink="/transition"
+          routerLink="/transaction"
         >
           Register
         </button>
-        <a routerLink="/transition" class="btn btn-outline-secondary">Cancer</a>
+        <a routerLink="/transaction" class="btn btn-outline-secondary">Cancer</a>
       </div>
     </div>
   </div>

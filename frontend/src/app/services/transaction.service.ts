@@ -7,18 +7,18 @@ const baseUrl = 'http://localhost:8080';
 @Injectable({
   providedIn: 'root',
 })
-export class TransitionService {
+export class TransactionService {
   constructor(private http: HttpClient) {}
 
   list(): Observable<any> {
-    return this.http.get(`${baseUrl}/transitions`);
+    return this.http.get(`${baseUrl}/transactions`);
   }
 
   findByIdAccount(idAccount: any): Observable<any> {
-    return this.http.get(`${baseUrl}/transitions/${idAccount}`);
+    return this.http.get(`${baseUrl}/transactions/${idAccount}`);
   }
 
-  create(transition: any): Observable<any> {
-    return this.http.post(`${baseUrl}/transitions`, transition);
+  create(transaction: any): Observable<any> {
+    return this.http.post(`${baseUrl}/transactions`, transaction);
   }
 }

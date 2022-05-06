@@ -16,11 +16,11 @@
       <button
         class="btn btn-outline-secondary me-md-2 btn-sm"
         type="button"
-        (click)="listTransitions()"
+        (click)="listTransactions()"
       >
         Search
       </button>
-      <a class="btn btn-outline-primary btn-sm" routerLink="/transition-new"
+      <a class="btn btn-outline-primary btn-sm" routerLink="/transaction-new"
         >New Transaction</a
       >
       <a class="btn btn-outline-primary btn-sm" routerLink="/account-holder"
@@ -39,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of transitions; index as i">
+          <tr *ngFor="let item of transactions; index as i">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.date }}</td>
             <td>{{ item.description }}</td>

@@ -15,8 +15,8 @@ import com.dio.santander.banklineapi.models.entities.enums.TransitionType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "tb_transition")
-public class Transition {
+@Table(name = "tb_transaction")
+public class Transaction {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,16 +34,16 @@ public class Transition {
   @Column(name = "id_Account")
   private Integer idAccount;
 
-  public Transition() {
-  }
+  public Transaction() {}
 
-  public Transition(
-      Long id,
-      LocalDateTime date,
-      String description,
-      Double value,
-      TransitionType type,
-      Integer idAccount) {
+  public Transaction(
+    Long id,
+    LocalDateTime date,
+    String description,
+    Double value,
+    TransitionType type,
+    Integer idAccount
+  ) {
     this.id = id;
     this.date = date;
     this.description = description;

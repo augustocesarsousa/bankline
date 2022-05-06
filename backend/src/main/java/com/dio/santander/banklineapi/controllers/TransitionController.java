@@ -3,7 +3,7 @@ package com.dio.santander.banklineapi.controllers;
 import java.util.List;
 
 import com.dio.santander.banklineapi.models.dto.NewTransitionDTO;
-import com.dio.santander.banklineapi.models.entities.Transition;
+import com.dio.santander.banklineapi.models.entities.Transaction;
 import com.dio.santander.banklineapi.repositories.TransitionRepository;
 import com.dio.santander.banklineapi.services.TransitionService;
 
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/transitions")
+@RequestMapping("/transactions")
 public class TransitionController {
 
   @Autowired
@@ -26,12 +26,14 @@ public class TransitionController {
   private TransitionService service;
 
   @GetMapping
-  public List<Transition> findAll() {
+  public List<Transaction> findAll() {
     return repository.findAll();
   }
 
   @GetMapping("/{idAccount}")
-  public List<Transition> findByIdAccount(@PathVariable("idAccount") Integer idAccount) {
+  public List<Transaction> findByIdAccount(
+    @PathVariable("idAccount") Integer idAccount
+  ) {
     return repository.findByIdAccount(idAccount);
   }
 
