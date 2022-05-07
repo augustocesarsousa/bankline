@@ -3,12 +3,15 @@
     <h1 class="display-6">Transaction</h1>
     <p class="lead-1">List of transactions by account holder</p>
     <hr class="my-2" />
-    <small *ngIf="accountHolderControl?.invalid && accountHolderControl?.touched" class="text-danger">Select an account holder</small>
+    <small
+      *ngIf="accountHolderControl?.invalid && accountHolderControl?.touched"
+      class="text-danger"
+      >Select an account holder</small
+    >
     <form [formGroup]="form">
       <div class="input-group">
         <select
           class="form-select"
-          id="accountHouder"
           formControlName="accountHolderControl"
           [(ngModel)]="accountHolder"
         >

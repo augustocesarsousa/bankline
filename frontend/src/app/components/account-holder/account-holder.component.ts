@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountHolderService } from 'src/app/services/account-holder.service';
 
@@ -19,9 +19,14 @@ export class AccountHolderComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.form = new FormGroup({
-      'cpfControl' : new FormControl(null, [Validators.required, Validators.minLength(11)]),
-      'nameControl' : new FormControl(null, Validators.required),
-    });}
+      cpfControl: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(11),
+        Validators.maxLength(11),
+      ]),
+      nameControl: new FormControl(null, Validators.required),
+    });
+  }
 
   ngOnInit() {
     this.showAccountHolders();
@@ -62,11 +67,11 @@ export class AccountHolderComponent implements OnInit {
     this.toastr.success('Account holder added successfully!');
   }
 
-  get cpfControl(){
+  get cpfControl() {
     return this.form.get('cpfControl');
   }
 
-  get nameControl(){
+  get nameControl() {
     return this.form.get('nameControl');
   }
 }

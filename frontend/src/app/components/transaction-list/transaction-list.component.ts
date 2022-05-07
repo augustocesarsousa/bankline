@@ -10,16 +10,18 @@ import { TransactionService } from 'src/app/services/transaction.service';
 })
 export class TransactionListComponent implements OnInit {
   transactions: any;
-  accountHolders: any;
+  accountHolders: any = [{}];
   accountHolder: any = {};
   form: FormGroup;
 
   constructor(
     private transactionService: TransactionService,
     private accountHolderService: AccountHolderService
-  ) {this.form = new FormGroup({
-    'accountHolderControl' : new FormControl(null, [Validators.nullValidator]),
-  });}
+  ) {
+    this.form = new FormGroup({
+      accountHolderControl: new FormControl(null, Validators.required),
+    });
+  }
 
   ngOnInit(): void {
     this.showAccountHolers();
@@ -30,7 +32,6 @@ export class TransactionListComponent implements OnInit {
       (data) => {
         this.accountHolders = data;
         console.log(data);
-        console.log(this.form.value.accountHolders.value)
       },
       (error) => {
         console.log(error);
@@ -50,7 +51,7 @@ export class TransactionListComponent implements OnInit {
     );
   }
 
-  get accountHolderControl(){
+  get accountHolderControl() {
     return this.form.get('accountHolderControl');
   }
 }
