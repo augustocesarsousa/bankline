@@ -45,7 +45,9 @@ a:hover {
   background-color: black;
 }
 
-.toolbar .logo-link{
+.toolbar .logo-link, 
+.toolbar .logo-link .row-1,
+.toolbar .logo-link .row-2  {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,10 +57,18 @@ a:hover {
   margin: 0 5px 0 16px;
 }
 
-.toolbar .logo-link .title{
+.toolbar .logo-link .row-2 .title{
   font-size: 24px;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.toolbar .logo-link .row-2 .separator{
+  margin: 0 5px 0 5px;
+}
+
+.toolbar .logo-link .row-2 .subtitle{
+  font-size: 16px;
 }
 
 .toolbar .github-link {
@@ -81,6 +91,29 @@ a:hover {
 }
 
 @media screen and (max-width: 575px) {
+  .toolbar {
+    position: absolute;
+    height: 80px;
+  }
+
+  .toolbar .logo-link .satander-logo{
+    width: 50px;
+  }
+
+  .toolbar .logo-link .row-2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toolbar .logo-link .row-2 .title{
+    margin-bottom: -10px;
+  }
+
+  .toolbar .logo-link .row-2 .separator{
+    display: none;
+  }
+
   .toolbar .github-link svg {
     width: 36px;
     height: 36px;
