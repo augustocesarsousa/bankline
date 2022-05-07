@@ -5,3 +5,11 @@ button, a{
 #iValue{
   min-width: 150px;
 }
+
+.form-control.ng-touched.ng-invalid, .form-select.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+.form-control.ng-touched.ng-valid, .form-select.ng-touched.ng-valid {
+  border: 2px solid green;
+}

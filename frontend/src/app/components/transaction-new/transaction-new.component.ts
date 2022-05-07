@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountHolderService } from 'src/app/services/account-holder.service';
 import { TransactionService } from 'src/app/services/transaction.service';
@@ -11,6 +12,7 @@ import { TransactionService } from 'src/app/services/transaction.service';
 export class TransactionNewComponent implements OnInit {
   accountHolders: any;
   accountHolder: any;
+  form: FormGroup;
 
   dateTime: any;
   description: any;
@@ -21,7 +23,18 @@ export class TransactionNewComponent implements OnInit {
     private transactionService: TransactionService,
     private accountHolderService: AccountHolderService,
     private toastr: ToastrService
-  ) {}
+  ) {
+    this.form = new FormGroup({
+      transactionDateControl: new FormControl(null, Validators.required),
+      transactionAccountHolderControl: new FormControl(
+        null,
+        Validators.required
+      ),
+      transactionDescriptionControl: new FormControl(null, Validators.required),
+      transactionTypeControl: new FormControl(null, Validators.required),
+      transactionValueControl: new FormControl(null, Validators.required),
+    });
+  }
 
   ngOnInit(): void {
     this.showAccountHolers();
@@ -53,6 +66,7 @@ export class TransactionNewComponent implements OnInit {
       (response) => {
         console.log(response);
         this.showSuccess();
+        this.form.reset;
       },
       (error) => {
         console.log(error);
@@ -62,5 +76,25 @@ export class TransactionNewComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success('Transaction added successfully!');
+  }
+
+  get transactionDateControl() {
+    return this.form.get('transactionDateControl');
+  }
+
+  get transactionAccountHolderControl() {
+    return this.form.get('transactionAccountHolderControl');
+  }
+
+  get transactionDescriptionControl() {
+    return this.form.get('transactionDescriptionControl');
+  }
+
+  get transactionTypeControl() {
+    return this.form.get('transactionTypeControl');
+  }
+
+  get transactionValueControl() {
+    return this.form.get('transactionValueControl');
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AccountHolderService } from 'src/app/services/account-holder.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 
@@ -10,13 +11,14 @@ import { TransactionService } from 'src/app/services/transaction.service';
 })
 export class TransactionListComponent implements OnInit {
   transactions: any;
-  accountHolders: any = [{}];
+  accountHolders: any;
   accountHolder: any = {};
   form: FormGroup;
 
   constructor(
     private transactionService: TransactionService,
-    private accountHolderService: AccountHolderService
+    private accountHolderService: AccountHolderService,
+    private toastr: ToastrService
   ) {
     this.form = new FormGroup({
       accountHolderControl: new FormControl(null, Validators.required),
@@ -31,7 +33,6 @@ export class TransactionListComponent implements OnInit {
     this.accountHolderService.list().subscribe(
       (data) => {
         this.accountHolders = data;
-        console.log(data);
       },
       (error) => {
         console.log(error);
@@ -43,12 +44,15 @@ export class TransactionListComponent implements OnInit {
     this.transactionService.findByIdAccount(this.accountHolder.id).subscribe(
       (data) => {
         this.transactions = data;
-        console.log(data);
       },
       (error) => {
-        console.log(error);
+        this.showError('Select an accout holder!');
       }
     );
+  }
+
+  showError(error: string) {
+    this.toastr.error(error);
   }
 
   get accountHolderControl() {

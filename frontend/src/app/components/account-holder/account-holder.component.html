@@ -15,18 +15,26 @@
           formControlName="cpfControl"
           [(ngModel)]="cpf"
         />
-        <small *ngIf="cpfControl?.invalid && cpfControl?.touched" class="text-danger">CPF must be 11 digits</small>
+        <small
+          *ngIf="cpfControl?.invalid && cpfControl?.touched"
+          class="text-danger"
+          >CPF must be 11 digits</small
+        >
       </div>
       <div class="col-md-5">
         <label for="nameInput">Name</label>
         <input
-        class="form-control"
+          class="form-control"
           type="text"
           id="nameInput"
           formControlName="nameControl"
           [(ngModel)]="name"
         />
-        <small *ngIf="nameControl?.invalid && nameControl?.touched" class="text-danger">Name is required</small>
+        <small
+          *ngIf="nameControl?.invalid && nameControl?.touched"
+          class="text-danger"
+          >Name is required</small
+        >
       </div>
       <div class="col-md-4">
         <div class="d-grid gap-2 d-md-flex buttons">
@@ -38,7 +46,7 @@
           >
             Add
           </button>
-          <a routerLink="/transaction" class="btn btn-outline-danger btn-50"
+          <a routerLink="/transaction" class="btn btn-outline-secondary btn-50"
             >Back</a
           >
         </div>
