@@ -3,118 +3,113 @@
     <h1 class="display-6">Transaction</h1>
     <p class="lead-1">Add a new transaction</p>
     <hr class="my-2" />
-    <div class="row">
-      <form [formGroup]="form">
-        <div class="col-md-3">
-          <label for="iDate" class="form-label">Date</label>
-          <input
-            type="date"
-            formControlName="transactionDateControl"
-            [(ngModel)]="dateTime"
-            class="form-control"
-            id="iDate"
-          />
-          <small
-            *ngIf="
-              transactionDateControl?.invalid && transactionDateControl?.touched
-            "
-            class="text-danger"
-            >Enter a date</small
-          >
-        </div>
-        <div class="col-md-9">
-          <label for="iAccountHouder" class="form-label">Account Houder</label>
-          <select
-            formControlName="transactionAccountHolderControl"
-            id="iAccountHouder"
-            [(ngModel)]="accountHolder"
-            class="form-select"
-          >
-            <option *ngFor="let a of accountHolders" [ngValue]="a">
-              {{ a.cpf }}-{{ a.name }}
-            </option>
-          </select>
-          <small
-            *ngIf="
-              transactionAccountHolderControl?.invalid &&
-              transactionAccountHolderControl?.touched
-            "
-            class="text-danger"
-            >Select an account holder</small
-          >
-        </div>
-        <div class="col-12">
-          <label for="iDescription" class="form-label">Description</label>
-          <input
-            formControlName="transactionDescriptionControl"
-            type="text"
-            [(ngModel)]="description"
-            class="form-control"
-            id="iDescription"
-            placeholder="Enter with a description"
-          />
-          <small
-            *ngIf="
-              transactionDescriptionControl?.invalid &&
-              transactionDescriptionControl?.touched
-            "
-            class="text-danger"
-            >Enter a description</small
-          >
-        </div>
-        <div class="col-md-3">
-          <label for="iType" class="form-label">Transaction Type</label>
-          <select
-            id="iType"
-            [(ngModel)]="type"
-            class="form-select"
-            formControlName="transactionTypeControl"
-          >
-            <option>REVENUE</option>
-            <option>EXPENDITURE</option>
-          </select>
-          <small
-            *ngIf="
-              transactionTypeControl?.invalid && transactionTypeControl?.touched
-            "
-            class="text-danger"
-            >Select a type
-          </small>
-        </div>
-        <div class="col-md-2">
-          <label for="iValue" class="form-label">US$ Value</label>
-          <input
-            formControlName="transactionValueControl"
-            type="text"
-            [(ngModel)]="value"
-            currencyMask
-            [options]="{ prefix: 'US$ ', thousands: '.', decimal: ',' }"
-            class="form-control transaction-value"
-            id="iValue"
-          />
-          <small
-            *ngIf="
-              transactionValueControl?.invalid &&
-              transactionValueControl?.touched
-            "
-            class="text-danger"
-            >Enter a value
-          </small>
-        </div>
-        <div class="d-grid gap-2 d-md-flex mt-2 mb-3">
-          <button
-            class="btn btn-outline-primary me-md-2"
-            type="button"
-            [disabled]="form.invalid"
-            (click)="save()"
-          >
-            Register
-          </button>
-          <a routerLink="/transaction" class="btn btn-outline-secondary"
-            >Back</a
-          >
-        </div>
-      </form>
-    </div>
+    <form class="row" [formGroup]="form">
+      <div class="col-md-3">
+        <label for="iDate" class="form-label">Date</label>
+        <input
+          type="date"
+          formControlName="transactionDateControl"
+          [(ngModel)]="dateTime"
+          class="form-control"
+          id="iDate"
+        />
+        <small
+          *ngIf="
+            transactionDateControl?.invalid && transactionDateControl?.touched
+          "
+          class="text-danger"
+          >Enter a date</small
+        >
+      </div>
+      <div class="col-md-9">
+        <label for="iAccountHouder" class="form-label">Account Houder</label>
+        <select
+          formControlName="transactionAccountHolderControl"
+          id="iAccountHouder"
+          [(ngModel)]="accountHolder"
+          class="form-select"
+        >
+          <option *ngFor="let a of accountHolders" [ngValue]="a">
+            {{ a.cpf }}-{{ a.name }}
+          </option>
+        </select>
+        <small
+          *ngIf="
+            transactionAccountHolderControl?.invalid &&
+            transactionAccountHolderControl?.touched
+          "
+          class="text-danger"
+          >Select an account holder</small
+        >
+      </div>
+      <div class="col-12">
+        <label for="iDescription" class="form-label">Description</label>
+        <input
+          formControlName="transactionDescriptionControl"
+          type="text"
+          [(ngModel)]="description"
+          class="form-control"
+          id="iDescription"
+          placeholder="Enter with a description"
+        />
+        <small
+          *ngIf="
+            transactionDescriptionControl?.invalid &&
+            transactionDescriptionControl?.touched
+          "
+          class="text-danger"
+          >Enter a description</small
+        >
+      </div>
+      <div class="col-md-3">
+        <label for="iType" class="form-label">Transaction Type</label>
+        <select
+          id="iType"
+          [(ngModel)]="type"
+          class="form-select"
+          formControlName="transactionTypeControl"
+        >
+          <option>REVENUE</option>
+          <option>EXPENDITURE</option>
+        </select>
+        <small
+          *ngIf="
+            transactionTypeControl?.invalid && transactionTypeControl?.touched
+          "
+          class="text-danger"
+          >Select a type
+        </small>
+      </div>
+      <div class="col-md-2">
+        <label for="iValue" class="form-label">US$ Value</label>
+        <input
+          formControlName="transactionValueControl"
+          type="text"
+          [(ngModel)]="value"
+          currencyMask
+          [options]="{ prefix: 'US$ ', thousands: '.', decimal: ',' }"
+          class="form-control transaction-value"
+          id="iValue"
+        />
+        <small
+          *ngIf="
+            transactionValueControl?.invalid && transactionValueControl?.touched
+          "
+          class="text-danger"
+          >Enter a value
+        </small>
+      </div>
+      <div class="d-grid gap-2 d-md-flex mt-2 mb-3">
+        <button
+          class="btn btn-outline-primary me-md-2"
+          type="button"
+          [disabled]="form.invalid"
+          (click)="save()"
+        >
+          Register
+        </button>
+        <a routerLink="/transaction" class="btn btn-outline-secondary">Back</a>
+      </div>
+    </form>
   </div>
 </div>

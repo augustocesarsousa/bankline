@@ -5,10 +5,10 @@ import { TransactionListComponent } from './components/transaction-list/transact
 import { TransactionNewComponent } from './components/transaction-new/transaction-new.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'transaction', pathMatch: 'full' },
   { path: 'transaction-new', component: TransactionNewComponent },
   { path: 'transaction', component: TransactionListComponent },
   { path: 'account-holder', component: AccountHolderComponent },
-  { path: '', redirectTo: 'transaction', pathMatch: 'full' },
 ];
 
 @NgModule({
