@@ -6,7 +6,20 @@
     margin: 1px;
 }
 
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+.form-control.ng-touched.ng-valid {
+  border: 2px solid green;
+}
+
+.buttons {
+  margin-top: 21px;
+}
+
 @media(min-width: 768px){
+
     .btn-50{
         width: 50%;
     }

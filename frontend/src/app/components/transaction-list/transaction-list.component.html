@@ -3,32 +3,35 @@
     <h1 class="display-6">Transaction</h1>
     <p class="lead-1">List of transactions by account holder</p>
     <hr class="my-2" />
-    <div class="input-group">
-      <select
-        id="iaccountHouder"
-        [(ngModel)]="accountHolder"
-        required
-        class="form-select"
-      >
-        <option *ngFor="let a of accountHolders" [ngValue]="a">
-          {{ a.cpf }}-{{ a.name }}
-        </option>
-      </select>
-
-      <button
-        class="btn btn-outline-secondary me-md-2 btn-sm"
-        type="button"
-        (click)="listTransactions()"
-      >
-        Search
-      </button>
-      <a class="btn btn-outline-primary btn-sm" routerLink="/transaction-new"
-        >New Transaction</a
-      >
-      <a class="btn btn-outline-primary btn-sm" routerLink="/account-holder"
-        >Account Holders</a
-      >
-    </div>
+    <small *ngIf="accountHolderControl?.invalid && accountHolderControl?.touched" class="text-danger">Select an account holder</small>
+    <form [formGroup]="form">
+      <div class="input-group">
+        <select
+          class="form-select"
+          id="accountHouder"
+          formControlName="accountHolderControl"
+          [(ngModel)]="accountHolder"
+        >
+          <option *ngFor="let a of accountHolders" [ngValue]="a">
+            {{ a.cpf }}-{{ a.name }}
+          </option>
+        </select>
+        <button
+          class="btn btn-outline-secondary me-md-2 btn-sm"
+          type="button"
+          [disabled]="form.invalid"
+          (click)="listTransactions()"
+        >
+          Search
+        </button>
+        <a class="btn btn-outline-primary btn-sm" routerLink="/transaction-new"
+          >New Transaction</a
+        >
+        <a class="btn btn-outline-primary btn-sm" routerLink="/account-holder"
+          >Account Holders</a
+        >
+      </div>
+    </form>
     <div class="table-transactions">
       <table class="table table-striped">
         <thead>

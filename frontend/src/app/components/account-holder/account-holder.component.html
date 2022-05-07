@@ -6,29 +6,32 @@
   </div>
   <form [formGroup]="form">
     <div class="row g-2">
-      <div class="col-md-3">
+      <div class="col-md-3 form-group">
+        <label for="cpfInput">CPF</label>
         <input
           class="form-control"
-          id="cpf"
+          type="text"
+          id="cpfInput"
+          formControlName="cpfControl"
           [(ngModel)]="cpf"
-          placeholder="CPF"
-          required
-          minlength="11"
-          #cpfValidator="ngModel"
         />
+        <small *ngIf="cpfControl?.invalid && cpfControl?.touched" class="text-danger">CPF must be 11 digits</small>
       </div>
       <div class="col-md-5">
+        <label for="nameInput">Name</label>
         <input
+        class="form-control"
           type="text"
-          class="form-control"
-          id="name"
+          id="nameInput"
+          formControlName="nameControl"
           [(ngModel)]="name"
-          placeholder="Account Holder Name"
         />
+        <small *ngIf="nameControl?.invalid && nameControl?.touched" class="text-danger">Name is required</small>
       </div>
       <div class="col-md-4">
-        <div class="d-grid gap-2 d-md-flex">
+        <div class="d-grid gap-2 d-md-flex buttons">
           <button
+            [disabled]="form.invalid"
             class="btn btn-outline-primary btn-50"
             type="submit"
             (click)="save()"

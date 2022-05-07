@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountHolderService } from 'src/app/services/account-holder.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 
@@ -11,11 +12,14 @@ export class TransactionListComponent implements OnInit {
   transactions: any;
   accountHolders: any;
   accountHolder: any = {};
+  form: FormGroup;
 
   constructor(
     private transactionService: TransactionService,
     private accountHolderService: AccountHolderService
-  ) {}
+  ) {this.form = new FormGroup({
+    'accountHolderControl' : new FormControl(null, [Validators.nullValidator]),
+  });}
 
   ngOnInit(): void {
     this.showAccountHolers();
@@ -26,6 +30,7 @@ export class TransactionListComponent implements OnInit {
       (data) => {
         this.accountHolders = data;
         console.log(data);
+        console.log(this.form.value.accountHolders.value)
       },
       (error) => {
         console.log(error);
@@ -43,5 +48,9 @@ export class TransactionListComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  get accountHolderControl(){
+    return this.form.get('accountHolderControl');
   }
 }
