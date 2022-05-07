@@ -19,7 +19,7 @@ public class AccountHolderService {
   public void save(NewAccountHolderDTO newAccountHolderDTO) {
     AccountHolder accountHolder = new AccountHolder();
     accountHolder.setCpf(newAccountHolderDTO.getCpf());
-    accountHolder.setName(newAccountHolderDTO.getName());
+    accountHolder.setName(newAccountHolderDTO.getName().toUpperCase());
 
     Account account = new Account();
     account.setNumber(new Date().getTime());
