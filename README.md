@@ -54,7 +54,7 @@ Este projeto foi desenvolvido no decorrer da Santander Dev Week da <a href="http
 
 ## Link do projeto implantado (Frontend - Netlify / Backend - Heroku)
 
-<a href="https://acsousa-bankline.netlify.app/transaction" target="_blank">Bankline</a>
+<a href="https://acsousa-bankline.netlify.app/" target="_blank">Bankline</a>
 
 **Observação**
 
